@@ -1,38 +1,47 @@
 export const initialState = {
-   toDoArray: [
+   todos: [
     {
         item: 'Learn about reducers',
         completed: false,
         id: Date.now()
-    },]
+    },
+
+    {
+        item: 'Learn about Javascript',
+        completed: false,
+        id: Date.now()
+    },
+
+]
 };
 
 
-export const reducerTodo = (state, action) => {
-    switch(action.type){
-
-        case 'TOGGLE_EDITING':
-            state.map(item => {
-                if (item.id === action.payload)
-                {
-                    return{
-                        ...state,
-                        todos: state.todos.map(...state)
-                    }
-                }
-            })
-        case 'UPDATE_TODO':
-
+export const reducer = (state, action) => {
+    switch (action.type) {
+        case 'ADD_TODO':
+            const newTodo = {
+                item: action.payload,
+                completed: false,
+                id: Date.now(),
+            };
             return {
                 ...state,
-                item: action.payload,
-                completed:!state.completed,
-                id: Date.now()
+                todos: [...state.todos, newTodo]
             };
-
-        default:
-            return state;
-
+        case 'TOGGLE_ITEM':
+            return {
+                ...state,
+                todos: state.todos.map(item => {
+                    if (action.payload === item.id) {
+                        return {
+                            ...item,
+                            completed: !item.completed
+                        };
+                    }
+                    return item;
+                })
+            };
+        //ClearPurchased
+        default: return state;
     }
-};
-
+}

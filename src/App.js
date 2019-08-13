@@ -1,12 +1,16 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import TodoForm from './components/Todo/TodoForm';
+import TodoList from './components/Todo/TodoList';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <TodoForm/>
+        <TodoList/>
       </header>
     </div>
   );

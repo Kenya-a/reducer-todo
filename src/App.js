@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 
 import TodoList from './components/TodoList';
 import ListForm from './components/ListForm'
@@ -7,12 +7,9 @@ import ListForm from './components/ListForm'
 import {
   reducer,
   initialState,
-  ADD_ITEM,
-  TOGGLE_ITEM,
+   ADD_TODO,
+   TOGGLE_ITEM,
 } from './reducers/reducer';
-
-
-
 
 const todos = [
   {
@@ -33,11 +30,11 @@ const  App = () => {
 
   const addItem = (e, item) => {
     e.preventDefault();
-    dispatch({ type: ADD_ITEM, payload: item });
+    dispatch({ type: ADD_TODO, payload: item });
   };
 
   const toggleItem = id => {
-    dispatch({ type: TOGGLE_ITEM, payload: id});
+     dispatch({ type: TOGGLE_ITEM, payload: id});
   };
 
   return (
